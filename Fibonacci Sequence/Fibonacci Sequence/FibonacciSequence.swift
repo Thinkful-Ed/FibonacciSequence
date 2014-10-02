@@ -1,31 +1,32 @@
-// Thinkful Playground
-// Thinkful.com
-
-// Fibonacci Sequence
-
-// By definition, the first two numbers in the Fibonacci sequence are 1 and 1, or 0 and 1, depending on the chosen starting point of the sequence, and each subsequent number is the sum of the previous two.
+//
+//  FibonacciSequence.swift
+//  Fibonacci Sequence
+//
+//  Created by 262Hz on 9/18/14.
+//  Copyright (c) 2014 Thinkful. All rights reserved.
+//
 
 class FibonacciSequence {
     
     let includesZero: Bool
-    let values: [UInt]
+    let values: [UInt64] // If you're wondering why we used UInt64 instead of UInt, try doing a find-and-replace in this file to use UInt instead of UInt64. You'll also have to change the "type cast" in the ViewController.swift file. Then if you run the app on the iPhone 5S simulator it will work just fine becuase iPhone 5S is a 64-bit platform. However if you run the app on the iPhone 5 simulator, you won't be able to see as many numbers. That's because the iPhone 5 is a 32-bit bit platform, so UInt is the same as UInt32 on the iPhone 5, but we really want it to be UInt64 regardless of the platform.
     
-    init(maxNumber: UInt, includesZero: Bool) {
+    init(maxNumber: UInt64, includesZero: Bool) {
         self.includesZero = includesZero
         if maxNumber == 0 && includesZero == false {
             values = []
         } else if maxNumber == 0 {
             values = [0]
         } else {
-            var sequence: [UInt] = [0,1,1]
-            var nextNumber: UInt = 2
+            var sequence: [UInt64] = [0,1,1]
+            var nextNumber: UInt64 = 2
             while nextNumber <= maxNumber {
                 sequence.append(nextNumber)
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
-                let (sum, didOverflow) = UInt.addWithOverflow(lastNumber, secondToLastNumber)
+                let (sum, didOverflow) = UInt64.addWithOverflow(lastNumber, secondToLastNumber)
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt!")
+                    println("Overflow! The next number is too big to store in a UInt64!")
                     break
                 }
                 nextNumber = sum
@@ -37,7 +38,7 @@ class FibonacciSequence {
         }
     }
     
-    init(numberOfItemsInSequence: UInt, includesZero: Bool) {
+    init(numberOfItemsInSequence: UInt64, includesZero: Bool) {
         self.includesZero = includesZero
         if numberOfItemsInSequence == 0 {
             values = []
@@ -48,7 +49,7 @@ class FibonacciSequence {
                 values = [1]
             }
         } else {
-            var sequence: [UInt]
+            var sequence: [UInt64]
             if includesZero == true {
                 sequence = [0,1]
             } else {
@@ -57,9 +58,9 @@ class FibonacciSequence {
             for var i = 2; i < Int(numberOfItemsInSequence); i++ {
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
-                let (nextNumber, didOverflow) = UInt.addWithOverflow(lastNumber, secondToLastNumber)
+                let (nextNumber, didOverflow) = UInt64.addWithOverflow(lastNumber, secondToLastNumber)
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt!")
+                    println("Overflow! The next number is too big to store in a UInt64!")
                     break
                 }
                 sequence.append(nextNumber)
@@ -68,13 +69,3 @@ class FibonacciSequence {
         }
     }
 }
-
-let fibonacciSequence = FibonacciSequence(maxNumber:12345, includesZero: true)
-
-println(fibonacciSequence.values)
-
-let anotherSequence = FibonacciSequence(numberOfItemsInSequence: 113, includesZero: true)
-
-println(anotherSequence.values)
-
-UInt.max
