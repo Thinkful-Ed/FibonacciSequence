@@ -28,7 +28,7 @@ class FibonacciSequence {
                 nextNumber = secondToLastNumber + lastNumber
             }
             if includesZero == false {
-                sequence.removeAtIndex(0)
+                sequence.remove(at: 0)
             }
             values = sequence
         }
@@ -51,7 +51,7 @@ class FibonacciSequence {
             } else {
                 sequence = [1,1]
             }
-            for var i = 2; i < numberOfItemsInSequence; i++ {
+            for _ in 2 ..< numberOfItemsInSequence {
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
                 let nextNumber = secondToLastNumber + lastNumber
@@ -64,8 +64,8 @@ class FibonacciSequence {
 
 let fibonacciSequence = FibonacciSequence(maxNumber: 12345, includesZero: true)
 
-println(fibonacciSequence.values)
+print(fibonacciSequence.values)
 
 let anotherSequence = FibonacciSequence(numberOfItemsInSequence: 13, includesZero: true)
 
-println(anotherSequence.values)
+print(anotherSequence.values)
