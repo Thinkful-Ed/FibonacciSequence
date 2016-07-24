@@ -21,10 +21,10 @@ class FibonacciCheater {
             values = []
         } else {
             if includesZero == false {
-                valuesPossibleWithUInt64.removeAtIndex(0)
+                valuesPossibleWithUInt64.remove(at: 0)
             }
             var count = valuesPossibleWithUInt64.count
-            for var i = 0; i < valuesPossibleWithUInt64.count; i++ {
+            for i in 0 ..< valuesPossibleWithUInt64.count {
                 if valuesPossibleWithUInt64[i] > maxNumber {
                     count = i
                     break
@@ -40,7 +40,7 @@ class FibonacciCheater {
             values = []
         } else {
             if includesZero == false {
-                valuesPossibleWithUInt64.removeAtIndex(0)
+                valuesPossibleWithUInt64.remove(at: 0)
             }
             var count: Int
             if Int(numberOfItemsInSequence) > valuesPossibleWithUInt64.count {

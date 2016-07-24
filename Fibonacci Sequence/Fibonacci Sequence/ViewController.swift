@@ -38,9 +38,9 @@ class ViewController: UIViewController {
     //MARK:- IBActions
     
     @IBAction func updateFibonacciSequence() {
-        includesZeroLabel.text = includesZeroSwitch.on ? "Yes" : "No"
+        includesZeroLabel.text = includesZeroSwitch.isOn ? "Yes" : "No"
         
-        if includesZeroSwitch.on {
+        if includesZeroSwitch.isOn {
             numberOfItemsSlider.maximumValue = 94
         } else {
             numberOfItemsSlider.maximumValue = 93
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         numberOfItemsLabel.text = String(Int(numberOfItemsSlider.value))
         
-        fibonacciSequence = FibonacciSequence(numberOfItemsInSequence: UInt64(numberOfItemsSlider.value), includesZero: includesZeroSwitch.on)
+        fibonacciSequence = FibonacciSequence(numberOfItemsInSequence: UInt64(numberOfItemsSlider.value), includesZero: includesZeroSwitch.isOn)
         
         textView.text = fibonacciSequence.values.description
     }
