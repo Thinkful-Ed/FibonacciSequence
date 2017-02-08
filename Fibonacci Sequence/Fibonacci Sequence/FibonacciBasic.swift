@@ -29,7 +29,7 @@ class FibonacciBasic {
                 nextNumber = secondToLastNumber + lastNumber
             }
             if includesZero == false {
-                sequence.removeAtIndex(0)
+                sequence.remove(at: 0)
             }
             values = sequence
         }
@@ -52,7 +52,7 @@ class FibonacciBasic {
             } else {
                 sequence = [1,1]
             }
-            for var i = 2; i < numberOfItemsInSequence; i++ {
+            for _ in 2 ..< numberOfItemsInSequence {
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
                 let nextNumber = secondToLastNumber + lastNumber

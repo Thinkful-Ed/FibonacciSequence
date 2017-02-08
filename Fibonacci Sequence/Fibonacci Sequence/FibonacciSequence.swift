@@ -26,13 +26,13 @@ class FibonacciSequence {
                 let secondToLastNumber = sequence[sequence.count-2]
                 let (sum, didOverflow) = UInt64.addWithOverflow(lastNumber, secondToLastNumber)
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt64!")
+                    print("Overflow! The next number is too big to store in a UInt64!")
                     break
                 }
                 nextNumber = sum
             }
             if includesZero == false {
-                sequence.removeAtIndex(0)
+                sequence.remove(at: 0)
             }
             values = sequence
         }
@@ -55,12 +55,12 @@ class FibonacciSequence {
             } else {
                 sequence = [1,1]
             }
-            for var i = 2; i < Int(numberOfItemsInSequence); i++ {
+            for _ in 2 ..< Int(numberOfItemsInSequence) {
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
                 let (nextNumber, didOverflow) = UInt64.addWithOverflow(lastNumber, secondToLastNumber)
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt64!")
+                    print("Overflow! The next number is too big to store in a UInt64!")
                     break
                 }
                 sequence.append(nextNumber)

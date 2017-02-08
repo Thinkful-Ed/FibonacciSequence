@@ -25,13 +25,13 @@ class FibonacciSequence {
                 let secondToLastNumber = sequence[sequence.count-2]
                 let (sum, didOverflow) = UInt.addWithOverflow(lastNumber, secondToLastNumber) // Add the last two numbers together to get the next number. If it overflows, we've exceeded the limits of UInt.
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt!")
+                    print("Overflow! The next number is too big to store in a UInt!")
                     break
                 }
                 nextNumber = sum // In a case of overflow, this line never gets excecuted.
             }
             if includesZero == false {
-                sequence.removeAtIndex(0) // Remove the first item which was zero by definition. Whoever created this instance wishes to believe that the Fibonacci sequence actually begins with 1 :)
+                sequence.remove(at: 0) // Remove the first item which was zero by definition. Whoever created this instance wishes to believe that the Fibonacci sequence actually begins with 1 :)
             }
             values = sequence
         }
@@ -54,12 +54,12 @@ class FibonacciSequence {
             } else {
                 sequence = [1,1]
             }
-            for var i = 2; i < Int(numberOfItemsInSequence); i++ {
+            for _ in 2 ..< Int(numberOfItemsInSequence) {
                 let lastNumber = sequence.last!
                 let secondToLastNumber = sequence[sequence.count-2]
                 let (nextNumber, didOverflow) = UInt.addWithOverflow(lastNumber, secondToLastNumber) // Add the last two numbers together to get the next number. If it overflows, we've exceed the limits of UInt
                 if didOverflow == true {
-                    println("Overflow! The next number is too big to store in a UInt!")
+                    print("Overflow! The next number is too big to store in a UInt!")
                     break
                 }
                 sequence.append(nextNumber) // Add the next number. In a case of overflow, this line never gets excecuted.
@@ -71,10 +71,10 @@ class FibonacciSequence {
 
 let fibanocciSequence = FibonacciSequence(maxNumber:12345, includesZero: true) // Try using different max numbers like 0, 1, 2, and see what happens if you try to enter a negative number or a floating point value. The FibonacciSequence class has been built to be pretty fool proof.
 
-println(fibanocciSequence.values) // Make sure (on your computer) to go to View -> Assistant Editor -> Show Assistant Editor so that you can see the console output.
+print(fibanocciSequence.values) // Make sure (on your computer) to go to View -> Assistant Editor -> Show Assistant Editor so that you can see the console output.
 
 let anotherSequence = FibonacciSequence(numberOfItemsInSequence: 13, includesZero: true)
 
-println(anotherSequence.values)
+print(anotherSequence.values)
 
 UInt.max // This is the maximum number which can be stored in a UInt.

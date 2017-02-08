@@ -28,7 +28,7 @@ class Fibonacci_SequenceTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }
@@ -37,7 +37,7 @@ class Fibonacci_SequenceTests: XCTestCase {
 
     // Plenty fast enough.
     func testFibonacciSequence() {
-        measureBlock() {
+        measure() {
             for _ in 1...100 {
                 let fibonacciSequence = FibonacciSequence(numberOfItemsInSequence: 90, includesZero: true)
             }
@@ -46,7 +46,7 @@ class Fibonacci_SequenceTests: XCTestCase {
     
     // Faster.
     func testFibonacciCheater() {
-        measureBlock() {
+        measure() {
             for _ in 1...100 {
                 let fibonacciSequence = FibonacciCheater(numberOfItemsInSequence: 90, includesZero: true)
             }
@@ -55,7 +55,7 @@ class Fibonacci_SequenceTests: XCTestCase {
     
     // Fastest, but it also does not check for "includesZero" or overflows.
     func testFibonacciAdvanced () {
-        self.measureBlock() {
+        self.measure() {
             for _ in 1...100 {
                 let fibonacciSequence = FibonacciAdvanced(numberOfItemsInSequence: 90, includesZero: true)
             }
